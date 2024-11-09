@@ -8,13 +8,13 @@ const Imperative = forwardRef(function Imperative(props, ref) {
     () => {
       return {
         focus() {
-          inputRef.current.focus;
+          inputRef.current.focus();
         },
       };
     },
     []
   );
-  return <input {...props} ref={ref} />;
+  return <input {...props} ref={inputRef} />;
 });
 
 export default Imperative;

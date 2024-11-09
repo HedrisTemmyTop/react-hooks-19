@@ -1,7 +1,7 @@
 import { Suspense, useDeferredValue, useId, useRef, useState } from "react";
 import "./App.css";
-import SearchResults from "./components/SearchResults";
 import Imperative from "./components/Imperative";
+import SearchResults from "./components/SearchResults";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -10,6 +10,10 @@ function App() {
   const id = useId();
   const uniqueId = useId();
   const isStale = query != deferredValue;
+
+  const handleClick = function () {
+    ref.current.focus();
+  };
 
   return (
     <div>
@@ -21,6 +25,7 @@ function App() {
       <div>Unique id: {id}</div>
       <div>Unique id: {uniqueId}</div>
       <Imperative ref={ref} placeholder="Enter your name" />
+      <button onClick={handleClick}>Click me</button>
       <Suspense fallback={<h2>Loading...</h2>}>
         <div
           style={{
